@@ -20,14 +20,13 @@ class ViewController: UIViewController {
             flipCountLabel.text = "Flips: \(flipCount)"
         }
     }
-    var emojiChoices = ["🐨", "☘️", "🐨", "🌝", "🍎", "🎁", "🐥"]
+    var emojiChoices = ["🐨", "☘️", "👁", "🌝", "🍎", "🎁", "🐥"]
     
     
     @IBAction func touchCard(_ sender: UIButton) {
         flipCount += 1
         if let cardNumber = cardButtons.firstIndex(of: sender){
             game.chooseCard(at: cardNumber)
-            //flipCard(withEmoji: emojiChoices[cardNumber], on: sender)
             updateViewFromModel()
         }
         

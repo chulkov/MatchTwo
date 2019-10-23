@@ -42,8 +42,7 @@ class MatchTwo{
             //cards.append(card)
             cards += [card, card]
         }
-        
         //TODO: Shuffle the cards
-        
+        cards = cards.shuffled()
     }
 }
