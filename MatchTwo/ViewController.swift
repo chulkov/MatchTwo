@@ -10,12 +10,15 @@ import UIKit
 class ViewController: UIViewController {
 
     
-   private lazy var game = MatchTwo(numberOfPairOfCards: numberOfPairOfCards)
+    
+    
+    private lazy var game = MatchTwo(numberOfPairOfCards: numberOfPairOfCards)
     
     var numberOfPairOfCards: Int {
             return (cardButtons.count + 1) / 2
     }
     
+    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak private var flipCountLabel: UILabel!
     @IBOutlet private var cardButtons: [UIButton]!
     
@@ -24,8 +27,26 @@ class ViewController: UIViewController {
             flipCountLabel.text = "Flips: \(flipCount)"
         }
     }
-    private var emojiChoices = ["🐨", "☘️", "👁", "🌝", "🍎", "🎁", "🐥"]
+    let emojiThemes = ["Halloween": ["🧟‍♀️", "🧛🏻‍♂️", "🤡", "😈", "🎃", "🎁", "🙀", "🧠"],
+                       "Nature": ["🌚", "🌈", "❄️", "☘️", "🍎", "🌻", "🌵", "🍌"],
+                       "Faces": ["🤪", "😭", "🥵", "🤬", "🤮", "🤠", "🤒", "🥶"],
+                       "People": ["👮🏻‍♂️", "👨🏻‍🌾", "👨🏻‍🔬", "👨🏻‍🏫", "👩🏻‍🚒", "👨🏻‍🚀", "👨🏻‍🍳", "👩🏼‍🎓"],
+                       "Animals": ["🦖", "🐻", "🦞", "🦆", "🐒", "🐛", "🐝", "🐙"]]
     
+    let backgroundThemes = ["Halloween": #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1),
+                            "Nature": #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1),
+                            "Faces": #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1),
+                            "People": #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1),
+                            "Animals": #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)]
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        newGame()
+        
+        
+    }
     
     @IBAction private func touchCard(_ sender: UIButton) {
         flipCount += 1
@@ -34,6 +55,18 @@ class ViewController: UIViewController {
             updateViewFromModel()
         }
         
+    }
+    fileprivate func newGame() {
+        game = MatchTwo(numberOfPairOfCards: numberOfPairOfCards)
+        let themeChooser = emojiThemes.randomElement()!
+        emojiChoices = themeChooser.value
+        flipCount = 0
+        updateViewFromModel()
+        view.backgroundColor = backgroundThemes[themeChooser.key]
+    }
+    
+    @IBAction func startNewGame(_ sender: UIButton) {
+        newGame()
     }
     
     func updateViewFromModel(){
@@ -49,7 +82,11 @@ class ViewController: UIViewController {
                 button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
             }
         }
+        scoreLabel.text = "Score: \(game.scoreCount)"
+        
     }
+    
+    private lazy var emojiChoices = emojiThemes.randomElement()!.value
     
     private var emoji = [Int:String]()
     

@@ -9,7 +9,9 @@ import Foundation
 
 class MatchTwo{
     
-   private(set) var cards = [Card]()
+    private(set) var cards = [Card]()
+    
+    private(set) var scoreCount = 0
     
     private var indexOfOneAndOnlyFaceUpCard: Int? {
         get{
@@ -39,10 +41,22 @@ class MatchTwo{
                 if cards[matchIndex].cardId == cards[index].cardId{
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
+                    //mached 2
+                    scoreCount = scoreCount + 3
                 }
                 cards[index].isFaceUp = true
+                //second card is not match
+                if cards[index].isMismatched || cards[matchIndex].isMismatched{
+                    scoreCount -= 1
+                }
+                if !cards[index].isMismatched{
+                    cards[index].isMismatched = true
+                }else if !cards[matchIndex].isMismatched{
+                    cards[matchIndex].isMismatched = true
+                }
+                
+                
             }else{
-                // either no cards or 2 cards are face up
                 indexOfOneAndOnlyFaceUpCard = index
             }
         }
@@ -56,7 +70,6 @@ class MatchTwo{
             //cards.append(card)
             cards += [card, card]
         }
-        //TODO: Shuffle the cards
         cards = cards.shuffled()
     }
 }

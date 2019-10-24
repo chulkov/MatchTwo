@@ -11,6 +11,7 @@ struct Card{
     
     var isFaceUp = false
     var isMatched = false
+    var isMismatched = false
     var cardId: Int
     
     private static var cardIdFactory = 0

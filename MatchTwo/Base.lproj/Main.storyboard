@@ -18,14 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRIES COUNT: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKj-AO-dEX">
-                                <rect key="frame" x="79.5" y="809" width="255.5" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="TJn-qT-s2c">
-                                <rect key="frame" x="20" y="57" width="374" height="342"/>
+                                <rect key="frame" x="20" y="107" width="374" height="342"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="9cE-KY-0l4">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="72"/>
@@ -177,20 +171,51 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFc-WN-Fuu">
+                                <rect key="frame" x="346" y="44" width="48" height="41"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.21711793664383561" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="New">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="startNewGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qye-T9-DKD"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pX-iB-gcW">
+                                <rect key="frame" x="20" y="804" width="125.5" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flips: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKj-AO-dEX">
+                                <rect key="frame" x="285" y="804" width="109" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fKj-AO-dEX" secondAttribute="bottom" constant="11" id="VlL-kp-xbV"/>
-                            <constraint firstItem="TJn-qT-s2c" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="13" id="ecm-z7-q0S"/>
+                            <constraint firstItem="aFc-WN-Fuu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="4ug-Me-HYI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6pX-iB-gcW" secondAttribute="bottom" constant="16" id="8Qt-lz-wMO"/>
+                            <constraint firstItem="fKj-AO-dEX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6pX-iB-gcW" secondAttribute="trailing" constant="8" symbolic="YES" id="EEe-Mo-QXf"/>
+                            <constraint firstItem="fKj-AO-dEX" firstAttribute="trailing" secondItem="TJn-qT-s2c" secondAttribute="trailing" id="Glg-Pw-6DO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fKj-AO-dEX" secondAttribute="bottom" constant="16" id="SLe-96-9C5"/>
+                            <constraint firstItem="TJn-qT-s2c" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="63" id="ecm-z7-q0S"/>
+                            <constraint firstItem="6pX-iB-gcW" firstAttribute="firstBaseline" secondItem="fKj-AO-dEX" secondAttribute="firstBaseline" id="hfH-Dx-sJo"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TJn-qT-s2c" secondAttribute="trailing" constant="20" id="i8a-99-6Mj"/>
-                            <constraint firstItem="fKj-AO-dEX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="jyK-Tl-Rdh"/>
-                            <constraint firstItem="fKj-AO-dEX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="TJn-qT-s2c" secondAttribute="bottom" constant="8" symbolic="YES" id="w6Y-7E-Rjt"/>
+                            <constraint firstItem="fKj-AO-dEX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="mIQ-zK-oMR"/>
+                            <constraint firstItem="6pX-iB-gcW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="qQR-JV-nz9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aFc-WN-Fuu" secondAttribute="trailing" constant="20" id="vDw-ie-9Pf"/>
+                            <constraint firstItem="aFc-WN-Fuu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="xK2-Te-LvS"/>
                             <constraint firstItem="TJn-qT-s2c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="yhT-q3-hc9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="flipCountLabel" destination="fKj-AO-dEX" id="8fD-QO-Z8n"/>
+                        <outlet property="scoreLabel" destination="6pX-iB-gcW" id="ZuO-fq-JWd"/>
                         <outletCollection property="cardButtons" destination="yoJ-oU-Vjf" collectionClass="NSMutableArray" id="3gd-21-ZlM"/>
                         <outletCollection property="cardButtons" destination="nFx-kV-xYg" collectionClass="NSMutableArray" id="Zfc-GZ-9Xg"/>
                         <outletCollection property="cardButtons" destination="kXd-x5-Isy" collectionClass="NSMutableArray" id="ZZl-8s-QgG"/>
